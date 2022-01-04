@@ -1,6 +1,19 @@
 version: '3.7'
 
 services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    ports:
+      - "9443:9443"
+      - "8000:8000"
+
   postgres:
     image: postgres
     container_name: pg_container
