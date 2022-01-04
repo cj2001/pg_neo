@@ -6,6 +6,7 @@ services:
     container_name: pg_container
     volumes:
       - $HOME/pg_data:/var/lib/postgresql/data
+      - ./sql/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: letmein
